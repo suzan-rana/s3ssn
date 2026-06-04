@@ -1,0 +1,283 @@
+// Veyra Prisma schema
+// Source of truth for the core data objects in VEYRA.md §12.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  avatarUrl String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  memberships  WorkspaceMember[]
+  sessions     CodingSession[]
+  activity     ActivityEvent[]
+  integrations Integration[]
+  credential   UserCredential?
+}
+
+model UserCredential {
+  userId       String   @id
+  passwordHash String
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Workspace {
+  id        String   @id @default(cuid())
+  name      String
+  ownerId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  members      WorkspaceMember[]
+  repositories Repository[]
+  projects     Project[]
+  clients      Client[]
+  integrations Integration[]
+  activity     ActivityEvent[]
+}
+
+model WorkspaceMember {
+  id          String   @id @default(cuid())
+  workspaceId String
+  userId      String
+  role        Role     @default(MEMBER)
+  createdAt   DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, userId])
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+model Repository {
+  id             String  @id @default(cuid())
+  workspaceId    String
+  provider       Provider
+  providerRepoId String?
+  name           String
+  remoteUrlHash  String?
+  defaultBranch  String?
+  projectId      String?
+  context        String? // Free-text repo context fed to AI for work-note generation
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  workspace Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  project   Project?         @relation(fields: [projectId], references: [id])
+  sessions  CodingSession[]
+  commits   Commit[]
+  pulls     PullRequest[]
+  activity  ActivityEvent[]
+
+  @@index([workspaceId])
+  @@unique([workspaceId, remoteUrlHash])
+}
+
+enum Provider {
+  GITHUB
+  GITLAB
+  BITBUCKET
+  LOCAL
+}
+
+model Project {
+  id          String  @id @default(cuid())
+  workspaceId String
+  clientId    String?
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace    Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  client       Client?      @relation(fields: [clientId], references: [id])
+  repositories Repository[]
+}
+
+model Client {
+  id          String   @id @default(cuid())
+  workspaceId String
+  name        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  projects  Project[]
+}
+
+model ActivityEvent {
+  id              String   @id @default(cuid())
+  userId          String
+  workspaceId     String
+  repositoryId    String?
+  branchName      String?
+  languageId      String?
+  eventType       EventType
+  timestamp       DateTime
+  durationSeconds Int      @default(0)
+  metadata        Json?
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace  Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  repository Repository? @relation(fields: [repositoryId], references: [id])
+
+  @@index([userId, timestamp])
+  @@index([workspaceId, timestamp])
+  @@index([repositoryId, branchName, timestamp])
+}
+
+enum EventType {
+  HEARTBEAT
+  EDIT
+  FOCUS
+  BLUR
+  IDLE
+  RESUME
+  PAUSE
+  FILE_OPEN
+  FILE_SAVE
+  BRANCH_SWITCH
+  COMMIT
+}
+
+model CodingSession {
+  id              String   @id @default(cuid())
+  userId          String
+  repositoryId    String?
+  branchName      String?
+  startedAt       DateTime
+  endedAt         DateTime
+  activeSeconds   Int
+  idleSeconds     Int      @default(0)
+  primaryLanguage String?
+  summary         String?  // AI-generated or user-edited work-log entry
+  summarySource   String?  // 'llm' | 'rule' | 'user'
+  summaryEditedAt DateTime?
+  createdAt       DateTime @default(now())
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  repository Repository? @relation(fields: [repositoryId], references: [id])
+  commits    CommitSessionLink[]
+  branches   SessionBranchSegment[]
+
+  @@index([userId, startedAt])
+  @@index([repositoryId, branchName, startedAt])
+}
+
+model SessionBranchSegment {
+  id         String   @id @default(cuid())
+  sessionId  String
+  branchName String
+  startedAt  DateTime
+  endedAt    DateTime
+  ordinal    Int
+
+  session CodingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId, ordinal])
+}
+
+model Commit {
+  id           String   @id @default(cuid())
+  repositoryId String
+  sha          String
+  message      String
+  authorName   String?
+  authorEmail  String?
+  committedAt  DateTime
+  additions    Int      @default(0)
+  deletions    Int      @default(0)
+  filesChanged Int      @default(0)
+  branchName   String?
+
+  repository Repository           @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
+  sessions   CommitSessionLink[]
+  pulls      PullRequestCommit[]
+
+  @@unique([repositoryId, sha])
+  @@index([repositoryId, committedAt])
+}
+
+model CommitSessionLink {
+  id         String  @id @default(cuid())
+  commitId   String
+  sessionId  String
+  confidence Float
+  auto       Boolean @default(true)
+
+  commit  Commit        @relation(fields: [commitId], references: [id], onDelete: Cascade)
+  session CodingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@unique([commitId, sessionId])
+}
+
+model PullRequest {
+  id           String   @id @default(cuid())
+  repositoryId String
+  number       Int
+  title        String
+  state        PrState
+  author       String?
+  openedAt     DateTime
+  mergedAt     DateTime?
+  closedAt     DateTime?
+
+  repository Repository          @relation(fields: [repositoryId], references: [id], onDelete: Cascade)
+  commits    PullRequestCommit[]
+
+  @@unique([repositoryId, number])
+  @@index([repositoryId, state])
+}
+
+enum PrState {
+  OPEN
+  MERGED
+  CLOSED
+}
+
+model PullRequestCommit {
+  id       String @id @default(cuid())
+  pullId   String
+  commitId String
+
+  pull   PullRequest @relation(fields: [pullId], references: [id], onDelete: Cascade)
+  commit Commit      @relation(fields: [commitId], references: [id], onDelete: Cascade)
+
+  @@unique([pullId, commitId])
+}
+
+model Integration {
+  id           String   @id @default(cuid())
+  userId       String
+  workspaceId  String
+  provider     Provider
+  accessToken  String
+  refreshToken String?
+  expiresAt    DateTime?
+  scope        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, workspaceId, provider])
+}

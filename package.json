@@ -1,0 +1,22 @@
+{
+  "name": "veyra",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --names types,db,api,web,ext --prefix-colors gray,gray,green,magenta,cyan \"pnpm --filter @veyra/types dev\" \"pnpm --filter @veyra/db dev\" \"pnpm --filter @veyra/api dev\" \"pnpm --filter @veyra/web dev\" \"pnpm --filter veyra-vscode dev\"",
+    "dev:web": "concurrently --kill-others-on-fail --names types,db,api,web --prefix-colors gray,gray,green,magenta \"pnpm --filter @veyra/types dev\" \"pnpm --filter @veyra/db dev\" \"pnpm --filter @veyra/api dev\" \"pnpm --filter @veyra/web dev\"",
+    "dev:up": "docker compose up -d && pnpm --filter @veyra/types build && pnpm --filter @veyra/db build && pnpm db:push && pnpm dev",
+    "build": "pnpm --filter @veyra/types build && pnpm --filter @veyra/db build && pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "typecheck": "pnpm -r run typecheck",
+    "db:generate": "pnpm --filter @veyra/db run generate",
+    "db:push": "pnpm --filter @veyra/db run push",
+    "db:migrate": "pnpm --filter @veyra/db run migrate"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  }
+}

@@ -1,0 +1,17 @@
+node_modules
+.next
+dist
+out
+build
+coverage
+.turbo
+.cache
+*.log
+.env
+.env.local
+.env.*.local
+.DS_Store
+.vscode-test
+*.vsix
+prisma/migrations/dev.db*
+.pnpm-store

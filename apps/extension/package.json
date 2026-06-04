@@ -1,0 +1,98 @@
+{
+  "name": "veyra-vscode",
+  "displayName": "Veyra — Automatic Work Intelligence",
+  "description": "Turn your real coding activity into XP, levels, and an automatic work log. Never reads your code, keystrokes, or screen.",
+  "version": "0.0.1",
+  "publisher": "veyra",
+  "license": "MIT",
+  "homepage": "https://veyra.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/veyra-labs/veyra.git",
+    "directory": "apps/extension"
+  },
+  "bugs": {
+    "url": "https://github.com/veyra-labs/veyra/issues"
+  },
+  "engines": { "vscode": "^1.85.0" },
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#070708",
+    "theme": "dark"
+  },
+  "categories": ["Other", "Visualization"],
+  "keywords": [
+    "time tracking",
+    "productivity",
+    "git",
+    "engineering metrics",
+    "gamification",
+    "standup",
+    "leaderboard"
+  ],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "scripts": {
+    "dev": "tsc -w -p ./",
+    "build": "tsc -p ./",
+    "vscode:prepublish": "tsc -p ./",
+    "typecheck": "tsc --noEmit",
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
+  },
+  "contributes": {
+    "commands": [
+      { "command": "veyra.login", "title": "Veyra: Sign in" },
+      { "command": "veyra.logout", "title": "Veyra: Sign out" },
+      { "command": "veyra.pause", "title": "Veyra: Pause tracking" },
+      { "command": "veyra.resume", "title": "Veyra: Resume tracking" },
+      { "command": "veyra.status", "title": "Veyra: Show status" },
+      { "command": "veyra.openDashboard", "title": "Veyra: Open dashboard" }
+    ],
+    "configuration": {
+      "title": "Veyra",
+      "properties": {
+        "veyra.apiBaseUrl": {
+          "type": "string",
+          "default": "http://localhost:4000/v1",
+          "description": "Veyra API base URL."
+        },
+        "veyra.webBaseUrl": {
+          "type": "string",
+          "default": "http://localhost:3000",
+          "description": "Veyra web dashboard base URL (used for browser sign-in)."
+        },
+        "veyra.idleThresholdSeconds": {
+          "type": "number",
+          "default": 120,
+          "description": "Seconds with no editor activity before a session is considered idle."
+        },
+        "veyra.heartbeatIntervalSeconds": {
+          "type": "number",
+          "default": 30,
+          "description": "How often to emit a heartbeat while you are actively editing."
+        },
+        "veyra.flushIntervalSeconds": {
+          "type": "number",
+          "default": 60,
+          "description": "How often to flush batched events to the backend."
+        },
+        "veyra.excludedRepos": {
+          "type": "array",
+          "default": [],
+          "items": { "type": "string" },
+          "description": "Repository remote hashes to exclude from tracking."
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.1",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@veyra/types": "workspace:*"
+  }
+}
