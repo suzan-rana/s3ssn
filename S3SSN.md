@@ -1,18 +1,18 @@
-# PRD: Veyra
+# PRD: S3ssn
 
 ## 1. Product Overview
 
-**Product name:** Veyra
+**Product name:** S3ssn
 **Category:** Developer productivity, engineering intelligence, automatic work logs
 **Primary users:** Freelancers, software agencies, small engineering teams, founders, engineering managers
 
-Veyra automatically maps developer coding activity from VS Code to Git commits, branches, pull requests, projects, and clients. It helps developers and teams understand where engineering time goes without requiring manual timesheets.
+S3ssn automatically maps developer coding activity from VS Code to Git commits, branches, pull requests, projects, and clients. It helps developers and teams understand where engineering time goes without requiring manual timesheets.
 
 The product should feel like a **developer-owned work journal**, not an employee monitoring tool.
 
 ## 2. One-Liner
 
-**Veyra turns real coding activity into automatic work logs, project reports, and client-ready summaries.**
+**S3ssn turns real coding activity into automatic work logs, project reports, and client-ready summaries.**
 
 ## 3. Problem
 
@@ -37,7 +37,7 @@ Developers often forget to track time accurately, and managers/founders lack a r
 
 ## 4. Solution
 
-Veyra combines:
+S3ssn combines:
 
 1. **VS Code activity tracking**
 2. **Git commit history**
@@ -72,7 +72,7 @@ Example output:
 
 ## 6. Non-Goals
 
-Veyra should **not** be:
+S3ssn should **not** be:
 
 * an employee surveillance platform,
 * a keystroke tracker,
@@ -142,7 +142,7 @@ Primary needs:
 
 ### Developer
 
-As a developer, I want Veyra to automatically track my focused coding time so I do not need to manually log hours.
+As a developer, I want S3ssn to automatically track my focused coding time so I do not need to manually log hours.
 
 As a developer, I want to pause tracking anytime so I feel in control.
 
@@ -296,7 +296,7 @@ GitLab and Bitbucket are not MVP requirements.
 1. User signs up.
 2. User creates a workspace.
 3. User installs VS Code extension.
-4. User logs into Veyra from VS Code.
+4. User logs into S3ssn from VS Code.
 5. User connects GitHub.
 6. User selects repositories to track.
 7. User optionally creates projects/clients.
@@ -334,9 +334,9 @@ Success state:
 ## 10.4 Client Report Flow
 
 1. User maps repository to project/client.
-2. Veyra tracks work across repo/branch/commits.
+2. S3ssn tracks work across repo/branch/commits.
 3. User selects date range.
-4. Veyra generates:
+4. S3ssn generates:
 
    * total time,
    * commits,
@@ -346,7 +346,7 @@ Success state:
 
 ## 11. Time Attribution Logic
 
-Veyra should estimate time attribution using confidence scoring.
+S3ssn should estimate time attribution using confidence scoring.
 
 ### Branch attribution
 
@@ -631,7 +631,7 @@ Privacy is a core product requirement.
 
 Use copy like:
 
-> Veyra tracks coding context, not your code.
+> S3ssn tracks coding context, not your code.
 
 > No screenshots. No keystrokes. No surveillance.
 
@@ -779,7 +779,7 @@ For later, not required in MVP.
 
 ## 20. Final Product Direction
 
-Veyra should become the automatic work intelligence layer for software development.
+S3ssn should become the automatic work intelligence layer for software development.
 
 It should help users go from:
 

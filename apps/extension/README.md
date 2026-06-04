@@ -1,4 +1,4 @@
-# Veyra — Automatic Work Intelligence
+# S3ssn — Automatic Work Intelligence
 
 Turn your real coding activity into XP, levels, streaks, and an automatic work log.
 Never reads your code, keystrokes, or screen.
@@ -23,31 +23,31 @@ The extension boundary is the privacy contract. Read [`tracker.ts`](src/tracker.
 
 ## Setup
 
-1. Create an account at <https://veyra.app/signup>.
+1. Create an account at <https://s3ssn.app/signup>.
 2. Install this extension.
-3. Run **Veyra: Sign in** from the command palette and paste the token from your dashboard.
-4. Code as usual. Open <https://veyra.app/dashboard> to see your HUD fill in.
+3. Run **S3ssn: Sign in** from the command palette and paste the token from your dashboard.
+4. Code as usual. Open <https://s3ssn.app/dashboard> to see your HUD fill in.
 
 ## Commands
 
 | Command | What it does |
 | --- | --- |
-| `Veyra: Sign in` | Paste your dashboard token to authenticate. |
-| `Veyra: Sign out` | Forget the token on this machine. |
-| `Veyra: Pause tracking` | Stop emitting events until you resume. |
-| `Veyra: Resume tracking` | Resume after a pause. |
-| `Veyra: Show status` | Display current state + buffered event count. |
-| `Veyra: Open dashboard` | Open the web dashboard. |
+| `S3ssn: Sign in` | Paste your dashboard token to authenticate. |
+| `S3ssn: Sign out` | Forget the token on this machine. |
+| `S3ssn: Pause tracking` | Stop emitting events until you resume. |
+| `S3ssn: Resume tracking` | Resume after a pause. |
+| `S3ssn: Show status` | Display current state + buffered event count. |
+| `S3ssn: Open dashboard` | Open the web dashboard. |
 
 ## Settings
 
 | Setting | Default | Description |
 | --- | --- | --- |
-| `veyra.apiBaseUrl` | `http://localhost:4000/v1` | API endpoint. Point at your self-hosted instance or `https://api.veyra.app/v1`. |
-| `veyra.idleThresholdSeconds` | `120` | Seconds with no activity before a session is considered idle. |
-| `veyra.heartbeatIntervalSeconds` | `30` | How often to record a heartbeat while active. |
-| `veyra.flushIntervalSeconds` | `60` | How often to flush batched events to the backend. |
-| `veyra.excludedRepos` | `[]` | Repo remote hashes to never track. |
+| `s3ssn.apiBaseUrl` | `http://localhost:4000/v1` | API endpoint. Point at your self-hosted instance or `https://api.s3ssn.app/v1`. |
+| `s3ssn.idleThresholdSeconds` | `120` | Seconds with no activity before a session is considered idle. |
+| `s3ssn.heartbeatIntervalSeconds` | `30` | How often to record a heartbeat while active. |
+| `s3ssn.flushIntervalSeconds` | `60` | How often to flush batched events to the backend. |
+| `s3ssn.excludedRepos` | `[]` | Repo remote hashes to never track. |
 
 ## License
 

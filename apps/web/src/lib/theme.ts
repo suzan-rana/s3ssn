@@ -3,7 +3,7 @@
  * Server-only `readTheme()` lives in `theme.server.ts`.
  */
 
-export const THEME_COOKIE = 'veyra_theme';
+export const THEME_COOKIE = 's3ssn_theme';
 
 export const THEMES = ['arcade', 'duo', 'synthwave'] as const;
 export type Theme = (typeof THEMES)[number];

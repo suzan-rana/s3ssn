@@ -2,16 +2,16 @@
  * Seed mock activity for the existing primary user + workspace.
  * Idempotent-ish: clears prior generated data for the workspace then refills.
  *
- * Run from repo root: pnpm --filter @veyra/db exec dotenv -e ../../.env -- tsx prisma/seed-mock.ts
+ * Run from repo root: pnpm --filter @s3ssn/db exec dotenv -e ../../.env -- tsx prisma/seed-mock.ts
  */
 import { PrismaClient, Provider, PrState, EventType } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 const REPOS = [
-  { name: 'veyra/web', lang: 'TypeScript', default: 'main' },
-  { name: 'veyra/api', lang: 'TypeScript', default: 'main' },
-  { name: 'veyra/extension', lang: 'TypeScript', default: 'main' },
+  { name: 's3ssn/web', lang: 'TypeScript', default: 'main' },
+  { name: 's3ssn/api', lang: 'TypeScript', default: 'main' },
+  { name: 's3ssn/extension', lang: 'TypeScript', default: 'main' },
   { name: 'personal/dotfiles', lang: 'Shell', default: 'master' },
 ];
 
@@ -27,7 +27,7 @@ const COMMIT_MESSAGES = [
   'feat: add cyan accent variant to SegBar',
   'fix: idle threshold off-by-one',
   'feat: leaderboard pagination',
-  'docs: VEYRA.md §12 schema notes',
+  'docs: S3SSN.md §12 schema notes',
   'fix: theme picker focus ring on Safari',
   'feat: PR-to-session linking heuristic',
   'perf: batch heartbeat upserts',

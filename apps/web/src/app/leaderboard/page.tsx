@@ -65,7 +65,7 @@ function TopBar({ updatedAt, totalPlayers }: { updatedAt?: string; totalPlayers:
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 h-7 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="text-acid hover:text-bone">
-            ◂ VEYRA
+            ◂ S3SSN
           </Link>
           <span className="hidden md:inline">/ LEADERBOARD</span>
         </div>
@@ -114,7 +114,7 @@ function Hero({
             <span className="text-bone">?</span>
           </h1>
           <p className="mt-6 max-w-[560px] text-[15px] leading-[1.6] text-ink-200">
-            Veyra&apos;s universal leaderboard ranks every player by{' '}
+            S3ssn&apos;s universal leaderboard ranks every player by{' '}
             <span className="text-acid">real focused engineering time</span> — sessionized from
             actual editor activity, not self-reported.
           </p>
@@ -360,7 +360,7 @@ function Footer() {
   return (
     <footer className="bg-ink">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-10 flex items-center justify-between font-pixel text-[10px] uppercase tracking-[0.24em] text-ink-300">
-        <span>© VEYRA LABS · MMXXVI</span>
+        <span>© S3SSN LABS · MMXXVI</span>
         <span>FAIR PLAY · NO INFLATION · NO BOTS</span>
       </div>
     </footer>

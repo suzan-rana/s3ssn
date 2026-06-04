@@ -1,13 +1,13 @@
 import { cookies } from 'next/headers';
 
-export const VEYRA_TOKEN_COOKIE = 'veyra_token';
+export const S3SSN_TOKEN_COOKIE = 's3ssn_token';
 
 export function apiBase(): string {
   return process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:4000/v1';
 }
 
 function authHeader(): Record<string, string> {
-  const token = cookies().get(VEYRA_TOKEN_COOKIE)?.value;
+  const token = cookies().get(S3SSN_TOKEN_COOKIE)?.value;
   return token ? { authorization: `Bearer ${token}` } : {};
 }
 
@@ -21,14 +21,14 @@ export async function apiGet<T>(path: string, init?: RequestInit): Promise<T | n
     if (res.status === 401) return null;
     if (!res.ok) {
       // eslint-disable-next-line no-console
-      console.warn(`[veyra] GET ${path} → ${res.status}`);
+      console.warn(`[s3ssn] GET ${path} → ${res.status}`);
       return null;
     }
     return (await res.json()) as T;
   } catch (err) {
     // API down or unreachable — render the empty state instead of crashing the page.
     // eslint-disable-next-line no-console
-    console.warn(`[veyra] GET ${path} failed:`, err instanceof Error ? err.message : err);
+    console.warn(`[s3ssn] GET ${path} failed:`, err instanceof Error ? err.message : err);
     return null;
   }
 }
@@ -72,5 +72,5 @@ export async function apiPost<T>(path: string, body: unknown, init?: RequestInit
 }
 
 export function isAuthed(): boolean {
-  return !!cookies().get(VEYRA_TOKEN_COOKIE)?.value;
+  return !!cookies().get(S3SSN_TOKEN_COOKIE)?.value;
 }

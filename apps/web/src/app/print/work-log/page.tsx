@@ -154,7 +154,7 @@ export default async function PrintWorkLog({
           <header style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
             <div>
               <div className="mono muted" style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-                Veyra · Work log
+                S3ssn · Work log
               </div>
               <h1>{heading}</h1>
               <div className="muted" style={{ marginTop: 4 }}>
@@ -252,7 +252,7 @@ export default async function PrintWorkLog({
           )}
 
           <div className="footer">
-            <div>Generated {new Date().toLocaleString()} · veyra</div>
+            <div>Generated {new Date().toLocaleString()} · s3ssn</div>
             <div className="mono">
               {from} → {to}
           </div>

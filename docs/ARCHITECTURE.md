@@ -37,7 +37,7 @@
    into `CodingSession` rows. Branch switches or idle gaps > 5 min cut a session.
 4. **Sync Git** — GitHub OAuth pulls repos, commits, PRs. Webhooks keep them fresh.
 5. **Attribute** — `CommitSessionLink` rows are written with a 0–1 confidence score derived
-   from repo + branch + author + recency + language match (VEYRA.md §11). Auto-link at ≥ 0.60.
+   from repo + branch + author + recency + language match (S3SSN.md §11). Auto-link at ≥ 0.60.
 6. **Report** — `/v1/reports/today` and `/v1/reports/weekly` aggregate sessions, commits, and
    PRs into the shapes the dashboard renders.
 
@@ -59,4 +59,4 @@ It **never** reads:
 - environment variables
 
 `detectRepoContext` returns only `{ branch, remoteUrlHash, name }`. Anywhere that emits an
-event passes through `enqueue`, which respects the `veyra.excludedRepos` allowlist.
+event passes through `enqueue`, which respects the `s3ssn.excludedRepos` allowlist.

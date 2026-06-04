@@ -1,18 +1,18 @@
 {
-  "name": "veyra-vscode",
-  "displayName": "Veyra — Automatic Work Intelligence",
+  "name": "s3ssn-vscode",
+  "displayName": "S3ssn — Automatic Work Intelligence",
   "description": "Turn your real coding activity into XP, levels, and an automatic work log. Never reads your code, keystrokes, or screen.",
   "version": "0.0.1",
-  "publisher": "veyra",
+  "publisher": "s3ssn",
   "license": "MIT",
-  "homepage": "https://veyra.app",
+  "homepage": "https://s3ssn.app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/veyra-labs/veyra.git",
+    "url": "https://github.com/s3ssn-labs/s3ssn.git",
     "directory": "apps/extension"
   },
   "bugs": {
-    "url": "https://github.com/veyra-labs/veyra/issues"
+    "url": "https://github.com/s3ssn-labs/s3ssn/issues"
   },
   "engines": { "vscode": "^1.85.0" },
   "icon": "media/icon.png",
@@ -42,42 +42,42 @@
   },
   "contributes": {
     "commands": [
-      { "command": "veyra.login", "title": "Veyra: Sign in" },
-      { "command": "veyra.logout", "title": "Veyra: Sign out" },
-      { "command": "veyra.pause", "title": "Veyra: Pause tracking" },
-      { "command": "veyra.resume", "title": "Veyra: Resume tracking" },
-      { "command": "veyra.status", "title": "Veyra: Show status" },
-      { "command": "veyra.openDashboard", "title": "Veyra: Open dashboard" }
+      { "command": "s3ssn.login", "title": "S3ssn: Sign in" },
+      { "command": "s3ssn.logout", "title": "S3ssn: Sign out" },
+      { "command": "s3ssn.pause", "title": "S3ssn: Pause tracking" },
+      { "command": "s3ssn.resume", "title": "S3ssn: Resume tracking" },
+      { "command": "s3ssn.status", "title": "S3ssn: Show status" },
+      { "command": "s3ssn.openDashboard", "title": "S3ssn: Open dashboard" }
     ],
     "configuration": {
-      "title": "Veyra",
+      "title": "S3ssn",
       "properties": {
-        "veyra.apiBaseUrl": {
+        "s3ssn.apiBaseUrl": {
           "type": "string",
           "default": "http://localhost:4000/v1",
-          "description": "Veyra API base URL."
+          "description": "S3ssn API base URL."
         },
-        "veyra.webBaseUrl": {
+        "s3ssn.webBaseUrl": {
           "type": "string",
           "default": "http://localhost:3000",
-          "description": "Veyra web dashboard base URL (used for browser sign-in)."
+          "description": "S3ssn web dashboard base URL (used for browser sign-in)."
         },
-        "veyra.idleThresholdSeconds": {
+        "s3ssn.idleThresholdSeconds": {
           "type": "number",
           "default": 120,
           "description": "Seconds with no editor activity before a session is considered idle."
         },
-        "veyra.heartbeatIntervalSeconds": {
+        "s3ssn.heartbeatIntervalSeconds": {
           "type": "number",
           "default": 30,
           "description": "How often to emit a heartbeat while you are actively editing."
         },
-        "veyra.flushIntervalSeconds": {
+        "s3ssn.flushIntervalSeconds": {
           "type": "number",
           "default": 60,
           "description": "How often to flush batched events to the backend."
         },
-        "veyra.excludedRepos": {
+        "s3ssn.excludedRepos": {
           "type": "array",
           "default": [],
           "items": { "type": "string" },
@@ -93,6 +93,6 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@veyra/types": "workspace:*"
+    "@s3ssn/types": "workspace:*"
   }
 }

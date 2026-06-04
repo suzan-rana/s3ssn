@@ -76,7 +76,7 @@ export interface AuthTokenResponse {
   user: { id: string; email: string; name: string | null };
 }
 
-/** Confidence scoring for commit attribution (VEYRA.md §11). */
+/** Confidence scoring for commit attribution (S3SSN.md §11). */
 export const ATTRIBUTION = {
   SAME_REPO: 0.4,
   SAME_BRANCH: 0.25,

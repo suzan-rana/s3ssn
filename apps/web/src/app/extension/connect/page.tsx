@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { VEYRA_TOKEN_COOKIE } from '@/lib/api';
+import { S3SSN_TOKEN_COOKIE } from '@/lib/api';
 import { ConnectRedirect } from './connect-redirect';
 
 const ALLOWED_REDIRECT_SCHEMES = ['vscode:', 'vscode-insiders:', 'cursor:', 'windsurf:'];
@@ -30,15 +30,15 @@ export default function ExtensionConnect({
         <div className="max-w-md text-center space-y-4">
           <h1 className="font-display text-4xl tracking-tightest">Invalid sign-in link</h1>
           <p className="text-ink-300 text-sm">
-            This page should be opened from the Veyra VS Code extension. Try running{' '}
-            <span className="font-mono">Veyra: Sign in</span> again.
+            This page should be opened from the S3ssn VS Code extension. Try running{' '}
+            <span className="font-mono">S3ssn: Sign in</span> again.
           </p>
         </div>
       </main>
     );
   }
 
-  const token = cookies().get(VEYRA_TOKEN_COOKIE)?.value;
+  const token = cookies().get(S3SSN_TOKEN_COOKIE)?.value;
   if (!token) {
     const next = `/extension/connect?state=${encodeURIComponent(state)}&redirect=${encodeURIComponent(redirectTarget)}`;
     redirect(`/login?next=${encodeURIComponent(next)}`);

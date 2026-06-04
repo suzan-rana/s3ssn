@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { randomBytes } from 'crypto';
 
-const KEY = 'veyra.accessToken';
+const KEY = 's3ssn.accessToken';
 const CALLBACK_PATH = '/auth-callback';
 const STATE_TIMEOUT_MS = 5 * 60 * 1000;
 
@@ -28,7 +28,7 @@ export class Auth implements vscode.UriHandler {
   async login(): Promise<void> {
     const choice = await vscode.window.showQuickPick(
       [
-        { label: 'Sign in via browser', detail: 'Opens the Veyra dashboard and links back', id: 'browser' },
+        { label: 'Sign in via browser', detail: 'Opens the S3ssn dashboard and links back', id: 'browser' },
         { label: 'Paste access token', detail: 'For CI or headless setups', id: 'paste' },
       ],
       { placeHolder: 'How do you want to sign in?', ignoreFocusOut: true },
@@ -44,17 +44,17 @@ export class Auth implements vscode.UriHandler {
 
   private async loginByPaste(): Promise<void> {
     const token = await vscode.window.showInputBox({
-      prompt: 'Paste your Veyra access token',
+      prompt: 'Paste your S3ssn access token',
       ignoreFocusOut: true,
       password: true,
     });
     if (!token) return;
     await this.setToken(token.trim());
-    vscode.window.showInformationMessage('Veyra: signed in.');
+    vscode.window.showInformationMessage('S3ssn: signed in.');
   }
 
   private async loginByBrowser(): Promise<void> {
-    const cfg = vscode.workspace.getConfiguration('veyra');
+    const cfg = vscode.workspace.getConfiguration('s3ssn');
     const webBaseUrl = (cfg.get<string>('webBaseUrl') ?? 'http://localhost:3000').replace(/\/$/, '');
 
     const publisher = this.ctx.extension.packageJSON.publisher as string;
@@ -69,14 +69,14 @@ export class Auth implements vscode.UriHandler {
     const opened = await vscode.env.openExternal(vscode.Uri.parse(connectUrl));
     if (!opened) {
       this.cancelPending(new Error('Failed to open browser'));
-      vscode.window.showErrorMessage('Veyra: could not open browser. Try "Paste access token" instead.');
+      vscode.window.showErrorMessage('S3ssn: could not open browser. Try "Paste access token" instead.');
       return;
     }
 
     await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Notification,
-        title: 'Veyra: waiting for browser sign-in…',
+        title: 'S3ssn: waiting for browser sign-in…',
         cancellable: true,
       },
       async (_progress, cancelToken) => {
@@ -84,11 +84,11 @@ export class Auth implements vscode.UriHandler {
         try {
           const token = await tokenPromise;
           await this.setToken(token);
-          vscode.window.showInformationMessage('Veyra: signed in.');
+          vscode.window.showInformationMessage('S3ssn: signed in.');
         } catch (err) {
           const msg = err instanceof Error ? err.message : String(err);
           if (msg !== 'Cancelled') {
-            vscode.window.showErrorMessage(`Veyra: sign-in failed — ${msg}`);
+            vscode.window.showErrorMessage(`S3ssn: sign-in failed — ${msg}`);
           }
         }
       },
@@ -123,7 +123,7 @@ export class Auth implements vscode.UriHandler {
     const error = params.get('error');
 
     if (!this.pending) {
-      vscode.window.showWarningMessage('Veyra: received auth callback but no sign-in is in progress.');
+      vscode.window.showWarningMessage('S3ssn: received auth callback but no sign-in is in progress.');
       return;
     }
     if (error) {
@@ -146,6 +146,6 @@ export class Auth implements vscode.UriHandler {
 
   async logout(): Promise<void> {
     await this.ctx.secrets.delete(KEY);
-    vscode.window.showInformationMessage('Veyra: signed out.');
+    vscode.window.showInformationMessage('S3ssn: signed out.');
   }
 }

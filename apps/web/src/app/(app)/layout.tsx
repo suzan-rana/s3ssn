@@ -29,7 +29,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
         <div className="px-5 py-4 border-b hairline flex items-center justify-between">
           <Link href="/" className="font-display font-extrabold text-[18px] tracking-tightest flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-acid shadow-glow-acid crt-flicker" />
-            VEYRA
+            S3SSN
           </Link>
           <span className="font-pixel text-[8px] uppercase tracking-[0.24em] text-ink-300">v0.1</span>
         </div>

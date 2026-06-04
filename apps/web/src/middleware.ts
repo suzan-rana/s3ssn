@@ -15,7 +15,7 @@ export function middleware(req: NextRequest) {
   if (!APP_ROUTES.some((p) => pathname === p || pathname.startsWith(`${p}/`))) {
     return NextResponse.next();
   }
-  if (req.cookies.get('veyra_token')) return NextResponse.next();
+  if (req.cookies.get('s3ssn_token')) return NextResponse.next();
   const url = req.nextUrl.clone();
   url.pathname = '/login';
   url.searchParams.set('next', pathname);

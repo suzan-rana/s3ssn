@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectQueue } from '@nestjs/bullmq';
 import type { Queue } from 'bullmq';
-import type { ActivityBatch, ActivityEventInput, CommitPayload } from '@veyra/types';
-import { Prisma } from '@veyra/db';
+import type { ActivityBatch, ActivityEventInput, CommitPayload } from '@s3ssn/types';
+import { Prisma } from '@s3ssn/db';
 import { PrismaService } from '../../prisma/prisma.service';
 
 @Injectable()

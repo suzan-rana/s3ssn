@@ -2,7 +2,7 @@ import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Allow, ArrayMaxSize, IsArray, IsOptional, IsString, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
-import type { EventType } from '@veyra/types';
+import type { EventType } from '@s3ssn/types';
 import { ActivityService } from './activity.service';
 import { CurrentUser } from '../auth/current-user.decorator';
 

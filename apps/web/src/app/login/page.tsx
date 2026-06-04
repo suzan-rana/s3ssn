@@ -37,7 +37,7 @@ export default function Login({ searchParams }: { searchParams: { next?: string 
       </section>
       <aside className="hidden lg:flex col-span-5 hatch items-center justify-center p-10">
         <blockquote className="font-display italic text-[36px] leading-[1.2] max-w-[420px] text-ink-200">
-          “Veyra tracks coding context, not your code.”
+          “S3ssn tracks coding context, not your code.”
         </blockquote>
       </aside>
     </main>

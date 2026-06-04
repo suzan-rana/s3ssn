@@ -20,7 +20,7 @@ export default async function Repositories() {
       <PageHeader
         section="Work · Repositories"
         title={<>Repositories.</>}
-        caption="Every repo Veyra has seen activity for. Add optional project context to help the AI turn commits into proper work notes."
+        caption="Every repo S3ssn has seen activity for. Add optional project context to help the AI turn commits into proper work notes."
         right={
           repos.length > 0 ? (
             <div className="hidden md:flex flex-col items-end">

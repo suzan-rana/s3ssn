@@ -1,17 +1,17 @@
 import { cookies } from 'next/headers';
 import { PageHeader } from '@/components/PageHeader';
-import { VEYRA_TOKEN_COOKIE } from '@/lib/api';
+import { S3SSN_TOKEN_COOKIE } from '@/lib/api';
 import { CopyButton } from './copy-button';
 
 export default function TokenPage() {
-  const token = cookies().get(VEYRA_TOKEN_COOKIE)?.value ?? '';
+  const token = cookies().get(S3SSN_TOKEN_COOKIE)?.value ?? '';
 
   return (
     <>
       <PageHeader
         section="You · Settings"
         title={<>Extension token.</>}
-        caption="Paste this into VS Code: Cmd+Shift+P → Veyra: Sign in. Treat it like a password — it grants full access to your workspace until it expires."
+        caption="Paste this into VS Code: Cmd+Shift+P → S3ssn: Sign in. Treat it like a password — it grants full access to your workspace until it expires."
       />
       <section className="p-6 lg:p-10 border-b hairline">
         <div className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-300 mb-3">
@@ -33,8 +33,8 @@ export default function TokenPage() {
         <ol className="space-y-3 max-w-[640px]">
           {[
             'Open VS Code (or the Extension Development Host if running from source).',
-            'Run command: Veyra: Sign in.',
-            'Paste the token. The status bar shows ● Veyra · tracking.',
+            'Run command: S3ssn: Sign in.',
+            'Paste the token. The status bar shows ● S3ssn · tracking.',
           ].map((step, i) => (
             <li key={step} className="flex gap-4 border-b hairline pb-3">
               <span className="font-mono text-[12px] tnum text-acid">{String(i + 1).padStart(2, '0')}</span>

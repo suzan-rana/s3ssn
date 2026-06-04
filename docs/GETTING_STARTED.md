@@ -1,6 +1,6 @@
 # Getting started
 
-Caveman version. Read [VEYRA.md](../VEYRA.md) for the long form.
+Caveman version. Read [S3SSN.md](../S3SSN.md) for the long form.
 
 ## 0. Prereqs
 
@@ -45,7 +45,7 @@ cd apps/extension
 # open in VS Code, press F5 to launch Extension Development Host
 ```
 
-Sign in via the `Veyra: Sign in` command — paste a JWT obtained from the API's `POST /v1/auth/login`.
+Sign in via the `S3ssn: Sign in` command — paste a JWT obtained from the API's `POST /v1/auth/login`.
 
 ## 6. Smoke test the API
 
@@ -53,7 +53,7 @@ Sign in via the `Veyra: Sign in` command — paste a JWT obtained from the API's
 curl http://localhost:4000/v1/health
 ```
 
-## Acceptance criteria (VEYRA.md §17)
+## Acceptance criteria (S3SSN.md §17)
 
 The MVP is complete when each of the 15 acceptance checks passes. The scaffold covers items
 1–8 structurally; 9–14 require the sessionizer + attribution + reports wiring (skeletons present

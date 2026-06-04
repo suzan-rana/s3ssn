@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { randomUUID } from 'crypto';
-import type { ActivityEventInput, CommitPayload, EventType } from '@veyra/types';
+import type { ActivityEventInput, CommitPayload, EventType } from '@s3ssn/types';
 import { ApiClient } from './api';
 import { StatusBar } from './status-bar';
 import { detectRepoContext } from './git';
@@ -32,7 +32,7 @@ export class Tracker implements vscode.Disposable {
   ) {}
 
   async start(): Promise<void> {
-    const cfg = vscode.workspace.getConfiguration('veyra');
+    const cfg = vscode.workspace.getConfiguration('s3ssn');
     const heartbeatMs = (cfg.get<number>('heartbeatIntervalSeconds') ?? 30) * 1000;
     const flushMs = (cfg.get<number>('flushIntervalSeconds') ?? 60) * 1000;
 
@@ -77,7 +77,7 @@ export class Tracker implements vscode.Disposable {
     if (this.paused) return;
     const excluded =
       repo.remoteUrlHash &&
-      (vscode.workspace.getConfiguration('veyra').get<string[]>('excludedRepos') ?? []).includes(
+      (vscode.workspace.getConfiguration('s3ssn').get<string[]>('excludedRepos') ?? []).includes(
         repo.remoteUrlHash,
       );
     if (excluded) return;
@@ -94,14 +94,14 @@ export class Tracker implements vscode.Disposable {
 
   showStatus(): void {
     vscode.window.showInformationMessage(
-      `Veyra · ${this.paused ? 'paused' : 'tracking'} · ${this.buffer.length} events buffered`,
+      `S3ssn · ${this.paused ? 'paused' : 'tracking'} · ${this.buffer.length} events buffered`,
     );
   }
 
   private async tick(): Promise<void> {
     if (this.paused) return;
     const idleThreshold =
-      (vscode.workspace.getConfiguration('veyra').get<number>('idleThresholdSeconds') ?? 120) * 1000;
+      (vscode.workspace.getConfiguration('s3ssn').get<number>('idleThresholdSeconds') ?? 120) * 1000;
     const since = Date.now() - this.lastActiveAt;
     if (since > idleThreshold) {
       if (!this.idleEmitted) {
@@ -116,7 +116,7 @@ export class Tracker implements vscode.Disposable {
   }
 
   private heartbeatSeconds(): number {
-    return vscode.workspace.getConfiguration('veyra').get<number>('heartbeatIntervalSeconds') ?? 30;
+    return vscode.workspace.getConfiguration('s3ssn').get<number>('heartbeatIntervalSeconds') ?? 30;
   }
 
   private async onActivity(eventType: EventType): Promise<void> {
@@ -142,7 +142,7 @@ export class Tracker implements vscode.Disposable {
     const ctx = await detectRepoContext(editor?.document.uri);
     const excluded =
       ctx.remoteUrlHash &&
-      (vscode.workspace.getConfiguration('veyra').get<string[]>('excludedRepos') ?? []).includes(
+      (vscode.workspace.getConfiguration('s3ssn').get<string[]>('excludedRepos') ?? []).includes(
         ctx.remoteUrlHash,
       );
     if (excluded) return;

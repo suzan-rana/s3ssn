@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { ActivityBatch } from '@veyra/types';
+import type { ActivityBatch } from '@s3ssn/types';
 import { Auth } from './auth';
 
 export class ApiClient {
@@ -7,7 +7,7 @@ export class ApiClient {
 
   private baseUrl(): string {
     return (
-      vscode.workspace.getConfiguration('veyra').get<string>('apiBaseUrl') ??
+      vscode.workspace.getConfiguration('s3ssn').get<string>('apiBaseUrl') ??
       'http://localhost:4000/v1'
     );
   }
@@ -26,11 +26,11 @@ export class ApiClient {
       });
       if (!res.ok) {
         // eslint-disable-next-line no-console
-        console.warn('[veyra] batch rejected', res.status, await res.text());
+        console.warn('[s3ssn] batch rejected', res.status, await res.text());
       }
     } catch (err) {
       // eslint-disable-next-line no-console
-      console.warn('[veyra] batch error', err);
+      console.warn('[s3ssn] batch error', err);
     }
   }
 }

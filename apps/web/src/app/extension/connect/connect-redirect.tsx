@@ -25,7 +25,7 @@ export function ConnectRedirect({ callbackUrl }: { callbackUrl: string }) {
         <p className="text-ink-300 text-sm">
           {launched
             ? 'Returning you to the editor. If nothing happens, your browser may have blocked the redirect.'
-            : 'Linking your account to the Veyra extension…'}
+            : 'Linking your account to the S3ssn extension…'}
         </p>
         <a
           href={callbackUrl}

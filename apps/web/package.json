@@ -1,5 +1,5 @@
 {
-  "name": "@veyra/web",
+  "name": "@s3ssn/web",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@veyra/types": "workspace:*",
+    "@s3ssn/types": "workspace:*",
     "clsx": "^2.1.1",
     "geist": "^1.3.1",
     "next": "^14.2.5",

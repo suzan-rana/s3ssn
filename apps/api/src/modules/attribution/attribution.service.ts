@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { ATTRIBUTION } from '@veyra/types';
+import { ATTRIBUTION } from '@s3ssn/types';
 import { PrismaService } from '../../prisma/prisma.service';
 
 /**
- * Confidence scoring per VEYRA.md §11. The scorer walks commits in a repo and links
+ * Confidence scoring per S3SSN.md §11. The scorer walks commits in a repo and links
  * sessions that ended within an attribution window. Auto-link at >= AUTO_LINK_THRESHOLD;
  * weaker matches are still stored as `auto = false` so the UI can show suggestions.
  */

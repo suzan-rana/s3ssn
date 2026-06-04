@@ -90,7 +90,7 @@ export default async function Dashboard() {
 
   return (
     <>
-      <BootSplash line="// initializing veyra · loading save" />
+      <BootSplash line="// initializing s3ssn · loading save" />
       {totalSeconds > 0 && (
         <XpToast amount={Math.round(totalSeconds)} label="welcome back · today's XP" />
       )}

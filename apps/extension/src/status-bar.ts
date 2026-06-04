@@ -7,7 +7,7 @@ export class StatusBar implements vscode.Disposable {
 
   constructor() {
     this.item = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-    this.item.command = 'veyra.status';
+    this.item.command = 's3ssn.status';
     this.set('offline');
     this.item.show();
   }
@@ -15,14 +15,14 @@ export class StatusBar implements vscode.Disposable {
   set(state: TrackerState, detail?: string): void {
     const label =
       state === 'tracking'
-        ? '$(record) Veyra'
+        ? '$(record) S3ssn'
         : state === 'idle'
-          ? '$(circle-large-outline) Veyra'
+          ? '$(circle-large-outline) S3ssn'
           : state === 'paused'
-            ? '$(debug-pause) Veyra'
-            : '$(circle-slash) Veyra';
+            ? '$(debug-pause) S3ssn'
+            : '$(circle-slash) S3ssn';
     this.item.text = detail ? `${label} · ${detail}` : label;
-    this.item.tooltip = `Veyra · ${state}${detail ? ` · ${detail}` : ''}`;
+    this.item.tooltip = `S3ssn · ${state}${detail ? ` · ${detail}` : ''}`;
   }
 
   dispose(): void {

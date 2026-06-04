@@ -103,7 +103,7 @@ export default async function Settings() {
           <li>· Pause tracking any time from the VS Code status bar.</li>
           <li>
             · Exclude repos via the{' '}
-            <code className="font-mono text-acid">veyra.excludedRepos</code> setting.
+            <code className="font-mono text-acid">s3ssn.excludedRepos</code> setting.
           </li>
           <li>· Export your raw events as JSON (coming soon).</li>
           <li>· Delete your account and every event in it (coming soon).</li>

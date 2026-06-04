@@ -1,4 +1,4 @@
-# Veyra
+# S3ssn
 
 Automatic work intelligence for software development. Turn real coding activity into work logs, project reports, and client-ready summaries.
 
@@ -22,4 +22,4 @@ pnpm db:generate
 pnpm dev
 ```
 
-See [VEYRA.md](./VEYRA.md) for the full product spec.
+See [S3SSN.md](./S3SSN.md) for the full product spec.

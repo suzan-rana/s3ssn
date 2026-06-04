@@ -16,7 +16,7 @@ async function bootstrap() {
   const port = Number(process.env.PORT ?? 4000);
   await app.listen(port);
   // eslint-disable-next-line no-console
-  console.log(`[veyra-api] listening on :${port}`);
+  console.log(`[s3ssn-api] listening on :${port}`);
 }
 
 bootstrap();

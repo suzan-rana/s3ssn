@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@veyra/types', 'geist'],
+  transpilePackages: ['@s3ssn/types', 'geist'],
   experimental: {
     typedRoutes: false,
   },

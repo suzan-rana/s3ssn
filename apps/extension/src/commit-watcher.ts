@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import type { CommitPayload } from '@veyra/types';
+import type { CommitPayload } from '@s3ssn/types';
 import {
   getGitApi,
   hashRemote,
@@ -77,7 +77,7 @@ export class CommitWatcher implements vscode.Disposable {
       });
     } catch (err) {
       // eslint-disable-next-line no-console
-      console.warn('[veyra] commit watcher: failed to read log', err);
+      console.warn('[s3ssn] commit watcher: failed to read log', err);
     }
   }
 }

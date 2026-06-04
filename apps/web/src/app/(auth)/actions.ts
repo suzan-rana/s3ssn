@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { apiBase, VEYRA_TOKEN_COOKIE } from '@/lib/api';
+import { apiBase, S3SSN_TOKEN_COOKIE } from '@/lib/api';
 
 interface AuthResponse {
   accessToken: string;
@@ -24,7 +24,7 @@ async function exchange(path: string, payload: Record<string, unknown>): Promise
     // useful message instead of dumping `fetch failed` into the user's face.
     const msg = err instanceof Error ? err.message : String(err);
     throw new Error(
-      `Cannot reach the Veyra API at ${apiBase()}. Is the API server running? (${msg})`,
+      `Cannot reach the S3ssn API at ${apiBase()}. Is the API server running? (${msg})`,
     );
   }
   if (!res.ok) {
@@ -35,7 +35,7 @@ async function exchange(path: string, payload: Record<string, unknown>): Promise
 }
 
 function persistToken(token: string) {
-  cookies().set(VEYRA_TOKEN_COOKIE, token, {
+  cookies().set(S3SSN_TOKEN_COOKIE, token, {
     httpOnly: true,
     sameSite: 'lax',
     secure: process.env.NODE_ENV === 'production',
@@ -74,6 +74,6 @@ export async function signupAction(formData: FormData): Promise<void> {
 }
 
 export async function logoutAction(): Promise<void> {
-  cookies().delete(VEYRA_TOKEN_COOKIE);
+  cookies().delete(S3SSN_TOKEN_COOKIE);
   redirect('/login');
 }

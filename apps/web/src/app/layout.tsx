@@ -13,9 +13,9 @@ const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 const pixel = Silkscreen({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-pixel' });
 
 export const metadata: Metadata = {
-  title: 'Veyra — automatic work intelligence for software',
+  title: 'S3ssn — automatic work intelligence for software',
   description:
-    'Veyra turns real coding activity into automatic work logs, project reports, and client-ready summaries. No screenshots. No keystrokes. No surveillance.',
+    'S3ssn turns real coding activity into automatic work logs, project reports, and client-ready summaries. No screenshots. No keystrokes. No surveillance.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -8,12 +8,12 @@ import { useEffect, useState } from 'react';
  *
  * Total runtime: ~2.2 s. After that the splash fades + unmounts itself.
  */
-export function BootSplash({ line = '// initializing veyra · loading save' }: { line?: string }) {
+export function BootSplash({ line = '// initializing s3ssn · loading save' }: { line?: string }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const KEY = 'veyra:boot';
+    const KEY = 's3ssn:boot';
     if (sessionStorage.getItem(KEY)) return;
     sessionStorage.setItem(KEY, '1');
     setMounted(true);

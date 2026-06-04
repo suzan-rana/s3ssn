@@ -79,7 +79,7 @@ export function RepoRow({ repo }: { repo: Repo }) {
           </div>
           <p className="text-[12px] text-ink-300 mb-3 max-w-[640px]">
             Describe what this repo does, the audience, and any context that helps the AI write
-            better work notes from your commit messages — e.g. "Veyra web frontend (Next.js). Audience: developer
+            better work notes from your commit messages — e.g. "S3ssn web frontend (Next.js). Audience: developer
             users. Focus areas: HUD, quests, theming."
           </p>
           <textarea

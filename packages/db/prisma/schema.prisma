@@ -1,5 +1,5 @@
-// Veyra Prisma schema
-// Source of truth for the core data objects in VEYRA.md §12.
+// S3ssn Prisma schema
+// Source of truth for the core data objects in S3SSN.md §12.
 
 generator client {
   provider = "prisma-client-js"

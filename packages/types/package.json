@@ -1,5 +1,5 @@
 {
-  "name": "@veyra/types",
+  "name": "@s3ssn/types",
   "version": "0.0.0",
   "private": true,
   "main": "./dist/index.js",

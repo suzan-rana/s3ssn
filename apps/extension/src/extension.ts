@@ -22,13 +22,13 @@ export async function activate(context: vscode.ExtensionContext) {
     statusBar,
     tracker,
     commitWatcher,
-    vscode.commands.registerCommand('veyra.login', () => auth.login()),
-    vscode.commands.registerCommand('veyra.logout', () => auth.logout()),
-    vscode.commands.registerCommand('veyra.pause', () => tracker!.pause()),
-    vscode.commands.registerCommand('veyra.resume', () => tracker!.resume()),
-    vscode.commands.registerCommand('veyra.status', () => tracker!.showStatus()),
-    vscode.commands.registerCommand('veyra.openDashboard', () => {
-      const cfg = vscode.workspace.getConfiguration('veyra');
+    vscode.commands.registerCommand('s3ssn.login', () => auth.login()),
+    vscode.commands.registerCommand('s3ssn.logout', () => auth.logout()),
+    vscode.commands.registerCommand('s3ssn.pause', () => tracker!.pause()),
+    vscode.commands.registerCommand('s3ssn.resume', () => tracker!.resume()),
+    vscode.commands.registerCommand('s3ssn.status', () => tracker!.showStatus()),
+    vscode.commands.registerCommand('s3ssn.openDashboard', () => {
+      const cfg = vscode.workspace.getConfiguration('s3ssn');
       const base = (cfg.get<string>('webBaseUrl') ?? 'http://localhost:3000').replace(/\/$/, '');
       return vscode.env.openExternal(vscode.Uri.parse(`${base}/dashboard`));
     }),

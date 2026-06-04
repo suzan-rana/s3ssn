@@ -50,10 +50,10 @@ importers:
       '@octokit/webhooks-types':
         specifier: ^7.5.1
         version: 7.6.1
-      '@veyra/db':
+      '@s3ssn/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@veyra/types':
+      '@s3ssn/types':
         specifier: workspace:*
         version: link:../../packages/types
       bcryptjs:
@@ -117,7 +117,7 @@ importers:
 
   apps/extension:
     dependencies:
-      '@veyra/types':
+      '@s3ssn/types':
         specifier: workspace:*
         version: link:../../packages/types
     devDependencies:
@@ -136,7 +136,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@veyra/types':
+      '@s3ssn/types':
         specifier: workspace:*
         version: link:../../packages/types
       clsx:

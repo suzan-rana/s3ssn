@@ -1,5 +1,5 @@
 {
-  "name": "@veyra/api",
+  "name": "@s3ssn/api",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -20,8 +20,8 @@
     "@nestjs/throttler": "^6.2.1",
     "@octokit/rest": "^21.0.2",
     "@octokit/webhooks-types": "^7.5.1",
-    "@veyra/db": "workspace:*",
-    "@veyra/types": "workspace:*",
+    "@s3ssn/db": "workspace:*",
+    "@s3ssn/types": "workspace:*",
     "bcryptjs": "^2.4.3",
     "bullmq": "^5.12.0",
     "class-transformer": "^0.5.1",

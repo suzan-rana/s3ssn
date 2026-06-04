@@ -51,7 +51,7 @@ export default function Signup({ searchParams }: { searchParams: { next?: string
           {[
             ['01', 'Install the VS Code extension'],
             ['02', 'Sign in with your dashboard token'],
-            ['03', 'Start coding. Veyra does the rest.'],
+            ['03', 'Start coding. S3ssn does the rest.'],
           ].map(([n, t]) => (
             <div key={n} className="flex gap-4 border-b hairline pb-3">
               <span className="font-mono text-[12px] tnum text-acid">{n}</span>

@@ -75,7 +75,7 @@ function Nav() {
           className="font-display font-extrabold text-[22px] tracking-tightest leading-none flex items-center gap-2"
         >
           <span className="w-2 h-2 bg-acid inline-block shadow-glow-acid crt-flicker" />
-          VEYRA
+          S3SSN
         </Link>
         <nav className="hidden md:flex items-center gap-8 font-pixel text-[10px] uppercase tracking-[0.24em] text-ink-200">
           <Link className="link-grow" href="#what">What you get</Link>
@@ -134,7 +134,7 @@ function Hero() {
               <span className="text-bone">.</span>
             </h1>
             <p className="mt-10 max-w-[600px] text-[18px] leading-[1.6] text-ink-200">
-              Veyra turns your real coding hours into XP, levels, and streaks. See exactly what you
+              S3ssn turns your real coding hours into XP, levels, and streaks. See exactly what you
               shipped today. Compete with engineers everywhere on the universal leaderboard. Your
               daily standup writes itself.
             </p>
@@ -279,7 +279,7 @@ function WhatYouGet() {
     {
       chip: 'CARD 01',
       title: 'Finally know where your day went.',
-      copy: 'Open Veyra in the morning and see exactly what you shipped yesterday — every commit, every PR, every focused minute, mapped to the repo and branch it belongs to.',
+      copy: 'Open S3ssn in the morning and see exactly what you shipped yesterday — every commit, every PR, every focused minute, mapped to the repo and branch it belongs to.',
       bigStat: '13h 40m',
       statLabel: 'focused yesterday',
       tone: 'acid',
@@ -319,7 +319,7 @@ function WhatYouGet() {
             Four things you&apos;ll actually use.
           </h2>
           <p className="mt-6 text-[16px] text-ink-200 leading-[1.6]">
-            Not feature lists. Not roadmaps. The four moments Veyra changes about your week.
+            Not feature lists. Not roadmaps. The four moments S3ssn changes about your week.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -509,12 +509,12 @@ function HowItWorks() {
     {
       n: '01',
       title: 'Install the extension.',
-      copy: 'Install the Veyra extension from the VS Code marketplace and sign in with the token from your dashboard. That is the whole setup.',
+      copy: 'Install the S3ssn extension from the VS Code marketplace and sign in with the token from your dashboard. That is the whole setup.',
     },
     {
       n: '02',
       title: 'Code like you already do.',
-      copy: 'Veyra runs quietly in the background. It sees your active branch, your language, your focus. It does not see your code, screen, or keystrokes.',
+      copy: 'S3ssn runs quietly in the background. It sees your active branch, your language, your focus. It does not see your code, screen, or keystrokes.',
     },
     {
       n: '03',
@@ -616,7 +616,7 @@ function PrivacyPromise() {
             <span className="text-ink-200">Not the code.</span>
           </h2>
           <p className="mt-6 text-[15px] leading-[1.6] text-ink-200">
-            Veyra knows you spent 42 minutes on the <code className="text-acid font-mono">feat/scheduler</code>{' '}
+            S3ssn knows you spent 42 minutes on the <code className="text-acid font-mono">feat/scheduler</code>{' '}
             branch writing TypeScript. It does not, and will never, know what you wrote.
           </p>
           <p className="mt-4 text-[14px] text-ink-300">
@@ -708,7 +708,7 @@ function BigQuote() {
       <div className="mx-auto max-w-[1100px] px-6 lg:px-10 py-28 text-center">
         <span className="hud-chip mb-6 inline-flex">PLAYERS · ALSO SAY</span>
         <blockquote className="font-display font-medium text-[28px] lg:text-[44px] leading-[1.25] tracking-tightest mt-6">
-          “I opened Veyra on Friday and saw I&apos;d spent{' '}
+          “I opened S3ssn on Friday and saw I&apos;d spent{' '}
           <span className="glow-acid tnum">26 hours</span> in a single repo that week. I had{' '}
           <span className="italic">no idea</span>. That single number changed how I billed,
           how I rested, and how I argue for raises.”
@@ -744,7 +744,7 @@ function BigCTA() {
             <span className="text-bone">.</span>
           </h2>
           <p className="mt-6 max-w-[480px] text-[15px] leading-[1.6] text-ink-200">
-            Create an account, install the extension, get back to coding. Veyra does the rest in
+            Create an account, install the extension, get back to coding. S3ssn does the rest in
             the background.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -796,18 +796,18 @@ function Faq() {
   const FAQS = [
     {
       q: 'How do I get started?',
-      a: 'Create an account, install the Veyra extension from the VS Code marketplace, sign in with the token from your dashboard. After that you just keep coding — the HUD fills itself in.',
+      a: 'Create an account, install the S3ssn extension from the VS Code marketplace, sign in with the token from your dashboard. After that you just keep coding — the HUD fills itself in.',
     },
     {
       q: 'Does it slow down my editor?',
       a: 'No. The extension is tiny (about 1.4 KB gzipped), runs on event listeners VS Code already fires, and batches events to the server once a minute. You will not feel it.',
     },
     {
-      q: 'Can my boss see my Veyra?',
-      a: 'Only if you invite them. Veyra is a personal account by default. Workspaces are opt-in, and even inside a workspace your stats are visible only to people you add.',
+      q: 'Can my boss see my S3ssn?',
+      a: 'Only if you invite them. S3ssn is a personal account by default. Workspaces are opt-in, and even inside a workspace your stats are visible only to people you add.',
     },
     {
-      q: 'What does Veyra actually see?',
+      q: 'What does S3ssn actually see?',
       a: 'Your active repo and branch, the language you\'re writing, whether you\'re focused, and how long. That is the whole list. No code, no keystrokes, no screen, no clipboard.',
     },
     {
@@ -830,8 +830,8 @@ function Faq() {
           </h2>
           <p className="mt-6 text-[14px] text-ink-300">
             Don&apos;t see yours? Email{' '}
-            <a className="text-acid link-grow" href="mailto:hi@veyra.app">
-              hi@veyra.app
+            <a className="text-acid link-grow" href="mailto:hi@s3ssn.app">
+              hi@s3ssn.app
             </a>
             .
           </p>
@@ -867,7 +867,7 @@ function Footer() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-16 grid grid-cols-12 gap-8">
         <div className="col-span-12 lg:col-span-6">
           <div className="font-display font-extrabold text-[72px] lg:text-[128px] leading-[0.85] tracking-tightest">
-            <span className="glow-acid crt-flicker">VEYRA</span>
+            <span className="glow-acid crt-flicker">S3SSN</span>
           </div>
           <p className="mt-4 text-ink-300 font-pixel text-[10px] uppercase tracking-[0.24em]">
             Make coding feel like a game · private by default
@@ -892,7 +892,7 @@ function Footer() {
       </div>
       <div className="border-t hairline">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-6 flex items-center justify-between font-pixel text-[10px] uppercase tracking-[0.24em] text-ink-300">
-          <span>© VEYRA LABS · MMXXVI</span>
+          <span>© S3SSN LABS · MMXXVI</span>
           <span>NO TIMERS · NO SURVEILLANCE · NO BS</span>
         </div>
       </div>
